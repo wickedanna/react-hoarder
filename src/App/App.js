@@ -4,8 +4,8 @@ import 'firebase/auth';
 
 import fbConnection from '../helpers/data/connection';
 
-import Auth from '../components/Auth/Auth';
-import MyNavbar from '../components/MyNavbar/MyNavbar';
+import Auth from '../components/pages/Auth/Auth';
+import MyNavbar from '../components/shared/MyNavbar/MyNavbar';
 
 import './App.scss';
 
@@ -31,10 +31,11 @@ class App extends React.Component {
   }
 
   render() {
+    const { authed } = this.state;
+
     return (
       <div className="App">
-        <h2>React Hoarder</h2>
-        <MyNavbar />
+        <MyNavbar authed={authed}/>
         <Auth />
       </div>
     );
