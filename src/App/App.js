@@ -14,7 +14,6 @@ import Auth from '../components/pages/Auth/Auth';
 import EditStuff from '../components/pages/EditStuff/EditStuff';
 import Home from '../components/pages/Home/Home';
 import MyNavbar from '../components/shared/MyNavbar/MyNavbar';
-import MyStuff from '../components/pages/MyStuff/MyStuff';
 import NewStuff from '../components/pages/NewStuff/NewStuff';
 import SingleStuff from '../components/pages/SingleStuff/SingleStuff';
 
@@ -67,7 +66,6 @@ class App extends React.Component {
             <Switch>
               <PrivateRoute path='/home' component={Home} authed={authed}/>
               <PrivateRoute path='/new' component={NewStuff} authed={authed}/>
-              <PrivateRoute path='/stuff' component={MyStuff} authed={authed}/>
               <PrivateRoute path='/item/:stuffId' component={SingleStuff} authed={authed}/>
               <PrivateRoute path='/edit/:stuffId' component={EditStuff} authed={authed}/>
               <PublicRoute path='/auth' component={Auth} authed={authed}/>
