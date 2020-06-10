@@ -1,24 +1,40 @@
 import React from 'react';
 
+import authData from '../../../helpers/data/authData';
+import stuffData from '../../../helpers/data/stuffData';
+
+import MyStuff from '../../shared/MyStuff/MyStuff';
+
 import './Home.scss';
 
 class Home extends React.Component {
-  editEvent = (e) => {
-    e.preventDefault();
-    this.props.history.push('edit/12345');
+  state = {
+    stuff: [],
   }
 
-  singleEvent = (e) => {
-    e.preventDefault();
-    this.props.history.push('item/12345');
+  getStuff = () => {
+    const uid = authData.getUid();
+    stuffData.getStuffByUid(uid)
+      .then((stuff) => this.setState({ stuff }))
+      .catch((err) => console.error('unable to get stuff: ', err));
+  }
+
+  componentDidMount() {
+    this.getStuff();
   }
 
   render() {
+    const { stuff } = this.state;
+    const buildMyStuff = stuff.map((item) => (
+      <MyStuff key={item.id} item={item} />
+    ));
+
     return (
-      <div className="Home">
-        <h1>Home</h1>
-        <button className="btn btn-dark" onClick={this.editEvent}>Edit</button>
-        <button className="btn btn-dark" onClick={this.singleEvent}>Single</button>
+      <div className="Home col-12">
+        <h1>My Stuff</h1>
+        <div className="d-flex flex-wrap">
+        {buildMyStuff}
+        </div>
       </div>
     );
   }

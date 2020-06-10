@@ -8,7 +8,7 @@ const getStuffByUid = (uid) => new Promise((resolve, reject) => {
     .then((response) => {
       const allTheStuff = response.data;
       const stuff = [];
-      if (allTheStuff !== null) {
+      if (allTheStuff) {
         Object.keys(allTheStuff).forEach((item) => {
           allTheStuff[item].id = item;
           stuff.push(allTheStuff[item]);
