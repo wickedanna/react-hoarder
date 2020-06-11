@@ -21,7 +21,7 @@ class SingleStuff extends React.Component {
     return (
       <div className="SingleStuff">
         <h1>Single Stuff</h1>
-        <h2>Single stuff id is {item.id}</h2>
+        <h2>Single stuff id is {item.itemName}</h2>
       </div>
     );
   }
