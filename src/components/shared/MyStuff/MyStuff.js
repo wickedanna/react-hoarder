@@ -13,6 +13,7 @@ class MyStuff extends React.Component {
   render() {
     const { item } = this.props;
     const singleLink = `items/${item.id}`;
+    const editLink = `edit/${item.id}`;
 
     return (
       <div className="MyStuff col-3 my-2">
@@ -21,7 +22,9 @@ class MyStuff extends React.Component {
         <div className="card-body">
           <h5 className="card-title">{item.itemName}</h5>
           <p className="card-text">{item.itemDescription}</p>
-          <Link className="btn btn-dark m-1" to={singleLink}>View</Link>
+          <Link className="btn btn-dark m-1" to={singleLink}><i className="far fa-eye"></i></Link>
+          <Link className="btn btn-dark m-1" to={editLink}><i className="fas fa-pencil-alt"></i></Link>
+
           </div>
         </div>
       </div>
