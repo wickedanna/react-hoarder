@@ -23,10 +23,16 @@ class Home extends React.Component {
     this.getStuff();
   }
 
+  removeItem = (itemId) => {
+    stuffData.deleteItem(itemId)
+      .then(() => this.getStuff())
+      .catch((err) => console.error('could not delete item: ', err));
+  }
+
   render() {
     const { stuff } = this.state;
     const buildMyStuff = stuff.map((item) => (
-      <MyStuff key={item.id} item={item} />
+      <MyStuff key={item.id} item={item} removeItem={this.removeItem} />
     ));
 
     return (
